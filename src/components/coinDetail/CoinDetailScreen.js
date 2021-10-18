@@ -7,6 +7,7 @@ import {
   SectionList,
   FlatList,
   Pressable,
+  Alert,
 } from 'react-native';
 import {Http} from '../../libs/http';
 import Storage from '../../libs/storage';
@@ -95,11 +96,29 @@ export const CoinDetailScreen = ({route, navigation}) => {
   const removeFavorite = async () => {
     const key = `favorite-${coin.id}`;
 
-    const stored = await Storage.instance.remove(key);
+    Alert.alert(
+      `Remove From Favorites `,
+      `Are you sure that you want to remove ${coin.name} from you favorites?`,
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'Remove',
+          onPress: async () => {
+            const stored = await Storage.instance.remove(key);
 
-    if (stored) {
-      setFavorite(false);
-    }
+            if (stored) {
+              setFavorite(false);
+            }
+          },
+          style: 'destructive',
+        },
+      ],
+      {cancelable: false},
+    );
   };
   return (
     <View style={styles.container}>
