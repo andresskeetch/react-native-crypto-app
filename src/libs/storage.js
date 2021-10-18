@@ -37,6 +37,7 @@ class Storage {
 
   getAllKeys = async () => {
     try {
+      return await AsyncStorage.getAllKeys();
     } catch (e) {
       console.log('Error getAllKeys storage', e);
 
