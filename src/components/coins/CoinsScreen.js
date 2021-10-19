@@ -15,7 +15,7 @@ export const CoinsScreen = ({navigation}) => {
     });
   }, []);
 
-  const onPressItem = item => {
+  const handlePress = item => {
     navigation.navigate('Detail', {item});
   };
 
@@ -37,7 +37,7 @@ export const CoinsScreen = ({navigation}) => {
         maxToRenderPerBatch={5}
         pagingEnabled={true}
         renderItem={({item}) => {
-          return <CoinsDetail item={item} onPress={() => onPressItem(item)} />;
+          return <CoinsDetail item={item} onPress={() => handlePress(item)} />;
         }}
       />
     </View>

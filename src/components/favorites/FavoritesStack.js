@@ -15,7 +15,7 @@ export const FavoritesStack = () => {
         },
         headerTintColor: colors.white,
       }}>
-      <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
     </Stack.Navigator>
   );
 };
